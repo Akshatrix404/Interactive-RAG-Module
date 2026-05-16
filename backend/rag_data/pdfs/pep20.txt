@@ -1,0 +1,137 @@
+PEP 20 – The Zen of Python | peps.python.org 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Following system colour scheme 
+ 
+ 
+ 
+ 
+ 
+ 
+ Selected dark colour scheme 
+ 
+ 
+ 
+ 
+ 
+ 
+ Selected light colour scheme 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ PEP 20 – The Zen of Python 
+ 
+ PEP 20 – The Zen of Python 
+ 
+ Author : 
+ Tim Peters <tim.peters&#32;&#97;t&#32;gmail.com> 
+ Status : 
+ Active 
+ Type : 
+ Informational 
+ Created : 
+ 19-Aug-2004 
+ Post-History : 
+ 22-Aug-2004 
+ 
+ 
+ 
+ Table of Contents 
+ Abstract 
+ The Zen of Python 
+ Easter Egg 
+ References 
+ Copyright 
+ 
+ 
+ 
+ Abstract 
+ Long time Pythoneer Tim Peters succinctly channels the BDFL’s guiding
+principles for Python’s design into 20 aphorisms, only 19 of which
+have been written down. 
+ 
+ 
+ The Zen of Python 
+ Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+ 
+ 
+ 
+ 
+ Easter Egg 
+ >>> import this 
+ 
+ 
+ 
+ 
+ References 
+ Originally posted to comp &#46; lang &#46; python/python-list &#64; python &#46; org under a
+thread called “The Way of Python” 
+ 
+ 
+ Copyright 
+ This document has been placed in the public domain. 
+ 
+ 
+ 
+ Source: https://github.com/python/peps/blob/main/peps/pep-0020.rst 
+ Last modified: 2025-02-01 08:55:40 GMT
