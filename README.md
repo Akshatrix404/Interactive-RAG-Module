@@ -2,7 +2,6 @@
 A production-grade, full-stack AI helpdesk platform engineered on **FastAPI** and **React 18** — dual-powered by **Ollama (Llama 3.1)** for fully local inference and **Google Gemini Flash** as cloud fallback, with **RAG (Retrieval-Augmented Generation)** over a live **ChromaDB** vector store and **sentence-transformers** for semantic embeddings — where admins dynamically inject SOPs and policy documents into the knowledge base in real time, and users get precise, source-cited, context-grounded answers instantly, all secured behind **JWT authentication**, role-based access control, and a fully responsive **PostgreSQL**-backed, markdown-rendering chat UI — deployable in one command via **Docker Compose**.
 
 ---
----
 
 ## 📸 Features
 
