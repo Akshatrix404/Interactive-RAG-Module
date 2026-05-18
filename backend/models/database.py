@@ -18,10 +18,15 @@ class User(Base):
     full_name = Column(String(255), nullable=False)
     hashed_password = Column(String(255), nullable=False)
     is_active = Column(Boolean, default=True)
+    is_admin = Column(Boolean, default=False)   # NEW
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
-    sessions = relationship("ChatSession", back_populates="user", cascade="all, delete-orphan")
+    sessions = relationship(
+        "ChatSession",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )
 
 
 class ChatSession(Base):

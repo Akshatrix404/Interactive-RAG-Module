@@ -1,14 +1,3 @@
-"""
-Unified AI Service
-==================
-Orchestrates:
-  1. RAG retrieval  → fetch relevant Python reference chunks
-  2. Ollama          → primary local LLM (llama3.1 etc.)
-  3. Gemini Flash    → fallback if Ollama unavailable
-
-Priority: Ollama (local) → Gemini (cloud fallback)
-RAG context is injected into BOTH providers.
-"""
 
 import os
 import logging
@@ -27,12 +16,22 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
 
-GEMINI_SYSTEM = """You are HelpBot, an expert Python and software development AI assistant.
-You specialize in Python programming, web development, databases, algorithms, and general CS.
+GEMINI_SYSTEM = """
+You are HelpDesk AI, an enterprise AI assistant.
 
-When you receive reference material from Python documentation, use it to give accurate, cited answers.
-Always include code examples in proper markdown code blocks.
-Format responses in clean, well-structured Markdown."""
+You answer strictly based on retrieved reference documents and uploaded SOPs.
+
+Rules:
+- Answer ONLY from the provided retrieved context when relevant.
+- Do NOT generate programming code unless the user explicitly asks for code.
+- Do NOT assume the topic is Python or software.
+- If the question is about SOPs, policies, business processes, refunds, HR, operations, or uploaded documents, answer directly and professionally.
+- Keep responses concise, accurate, and document-grounded.
+- If the answer is not found in available context, say:
+  "I could not find that information in the available documents."
+
+Format responses clearly in markdown.
+"""
 
 
 class UnifiedAIService:

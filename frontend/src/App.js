@@ -9,29 +9,76 @@ import './App.css';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  if (loading) return (
-    <div className="loading-screen">
-      <div className="loading-spinner"></div>
-      <p>Loading...</p>
-    </div>
-  );
-  return user ? children : <Navigate to="/login" replace />;
+
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <div className="loading-spinner"></div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
 };
 
 const PublicRoute = ({ children }) => {
   const { user, loading } = useAuth();
+
   if (loading) return null;
+
   return !user ? children : <Navigate to="/dashboard" replace />;
+};
+
+const HomeRedirect = () => {
+  const { user, loading } = useAuth();
+
+  if (loading) return null;
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <Navigate to="/dashboard" replace />;
 };
 
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      <Route path="/login" element={<PublicRoute><LoginPage /></PublicRoute>} />
-      <Route path="/register" element={<PublicRoute><RegisterPage /></PublicRoute>} />
-      <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="/" element={<HomeRedirect />} />
+
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
+
+      <Route
+        path="/register"
+        element={
+          <PublicRoute>
+            <RegisterPage />
+          </PublicRoute>
+        }
+      />
+
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route path="*" element={<HomeRedirect />} />
     </Routes>
   );
 }
@@ -41,6 +88,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <AppRoutes />
+
         <Toaster
           position="top-right"
           toastOptions={{

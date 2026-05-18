@@ -27,6 +27,7 @@ class UserResponse(BaseModel):
     email: str
     username: str
     full_name: str
+    is_admin: bool
 
     class Config:
         from_attributes = True
@@ -73,10 +74,11 @@ async def register(request: RegisterRequest, db: AsyncSession = Depends(get_db))
         access_token=token,
         token_type="bearer",
         user=UserResponse(
-            id=str(user.id),
-            email=user.email,
-            username=user.username,
-            full_name=user.full_name
+          id=str(user.id),
+          email=user.email,
+          username=user.username,
+          full_name=user.full_name,
+          is_admin=user.is_admin
         )
     )
 
@@ -101,10 +103,11 @@ async def login(request: LoginRequest, db: AsyncSession = Depends(get_db)):
         access_token=token,
         token_type="bearer",
         user=UserResponse(
-            id=str(user.id),
-            email=user.email,
-            username=user.username,
-            full_name=user.full_name
+          id=str(user.id),
+          email=user.email,
+          username=user.username,
+          full_name=user.full_name,
+          is_admin=user.is_admin
         )
     )
 

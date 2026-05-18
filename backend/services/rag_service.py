@@ -1,12 +1,3 @@
-"""
-RAG Service — Python Reference Materials
-=========================================
-Downloads freely available Python PDFs & docs,
-chunks them, embeds with sentence-transformers,
-stores in ChromaDB, and retrieves relevant context
-to inject into every Gemini / Ollama prompt.
-"""
-
 import os
 import re
 import time
