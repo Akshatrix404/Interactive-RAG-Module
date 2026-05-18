@@ -1,9 +1,76 @@
 # HelpDesk AI
+A production-grade, full-stack AI helpdesk platform engineered on **FastAPI** and **React 18** — dual-powered by **Ollama (Llama 3.1)** for fully local inference and **Google Gemini Flash** as cloud fallback, with **RAG (Retrieval-Augmented Generation)** over a live **ChromaDB** vector store and **sentence-transformers** for semantic embeddings — where admins dynamically inject SOPs and policy documents into the knowledge base in real time, and users get precise, source-cited, context-grounded answers instantly, all secured behind **JWT authentication**, role-based access control, and a fully responsive **PostgreSQL**-backed, markdown-rendering chat UI — deployable in one command via **Docker Compose**.
 
-AI-powered helpdesk with chat history, RAG, and admin SOP uploads.
+---
+---
+
+## 📸 Features
+
+| Feature | Details |
+|---|---|
+| 🔐 Authentication | JWT-based login & registration |
+| 💬 AI Chat | Google Gemini Flash (gemini-1.5-flash) |
+| 🗂️ Chat History | Per-user sessions stored in PostgreSQL |
+| 📚 Source References | Responses cite docs & best practices |
+| 🌙 Markdown Rendering | Code blocks, tables, lists rendered beautifully |
+| 🐳 Docker Ready | One-command deployment |
 
 ---
 
+## 🏗️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 18, React Router v6, Axios |
+| **AI** | Google Gemini Flash (`gemini-2.5-flash`) |
+| **Backend** | FastAPI (Python 3.11), SQLAlchemy (async) |
+| **Database** | PostgreSQL 16 |
+| **Auth** | JWT (python-jose) + bcrypt |
+| **Deployment** | Docker + Docker Compose |
+
+---
+
+## 📁 Project Structure
+
+```
+helpdesk/
+├── backend/
+│   ├── main.py               # FastAPI app entry point
+│   ├── requirements.txt      # Python dependencies
+│   ├── .env.example          # Environment variable template
+│   ├── Dockerfile
+│   ├── middleware/
+│   │   └── auth.py           # JWT auth helpers
+│   ├── models/
+│   │   ├── database.py       # SQLAlchemy ORM models
+│   │   └── db.py             # DB engine & session
+│   ├── routes/
+│   │   ├── auth.py           # /api/auth/* endpoints
+│   │   └── chat.py           # /api/chat/* endpoints
+│   └── services/
+│       └── ai_service.py     # Gemini AI integration
+├── frontend/
+│   ├── package.json
+│   ├── Dockerfile
+│   ├── nginx.conf
+│   └── src/
+│       ├── App.js            # Router & layout
+│       ├── App.css           # Global styles
+│       ├── index.js
+│       ├── context/
+│       │   └── AuthContext.js  # Auth state & API client
+│       ├── pages/
+│       │   ├── LoginPage.js
+│       │   ├── RegisterPage.js
+│       │   └── DashboardPage.js  # Main chat UI
+│       └── components/
+│           └── ChatMessage.js    # Message bubble + markdown
+├── docker-compose.yml
+├── setup.sh          (Linux/macOS)
+├── setup_windows.bat (Windows)
+└── README.md
+```
+---
 ## Prerequisites
 
 Install these first:
@@ -109,3 +176,8 @@ App opens at `http://localhost:3000` 🎉
 | POST | `/api/admin/upload-sops` | Upload docs to RAG (admin only) |
 
 Full interactive docs: `http://localhost:8000/api/docs`
+---
+
+## 📄 License
+
+MIT — free to use, modify, and distribute.
