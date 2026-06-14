@@ -1,0 +1,15 @@
+node_modules/
+frontend/node_modules/
+__pycache__/
+backend/__pycache__/
+*.pyc
+.env*
+backend/.env
+frontend/.env
+uploads/
+backend/uploads/
+rag_data/
+backend/rag_data/
+.DS_Store
+build/
+dist/
